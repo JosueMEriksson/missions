@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  ability: MyString
+  level: 1
+  on_mission: false
+
+two:
+  name: MyString
+  ability: MyString
+  level: 1
+  on_mission: false

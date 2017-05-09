@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @agent.name %>
+</p>
+
+<p>
+  <b>Ability:</b>
+  <%= @agent.ability %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @agent.level %>
+</p>
+
+<p>
+  <b>On mission:</b>
+  <%= @agent.on_mission %>
+</p>
+
+
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>
