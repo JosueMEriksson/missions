@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170509082446) do
+ActiveRecord::Schema.define(:version => 20170509101550) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(:version => 20170509082446) do
     t.boolean  "on_mission"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "missions", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "type"
+    t.string   "status"
+    t.integer  "reward"
+    t.string   "agent"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

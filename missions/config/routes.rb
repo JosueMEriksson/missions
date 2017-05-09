@@ -1,4 +1,7 @@
 Missions::Application.routes.draw do
+  resources :missions
+
+
   get "headquarters/index"
 
   resources :agents

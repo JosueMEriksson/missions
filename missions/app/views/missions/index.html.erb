@@ -1,0 +1,34 @@
+<h1>Listing missions</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Reward</th>
+    <th>Agent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @missions.each do |mission| %>
+  <tr>
+    <td><%= mission.title %></td>
+    <td><%= mission.description %></td>
+    <td><%= mission.type %></td>
+    <td><%= mission.status %></td>
+    <td><%= mission.reward %></td>
+    <td><%= mission.agent %></td>
+    <td><%= link_to 'Show', mission %></td>
+    <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
+    <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mission', new_mission_path %>
+<%= link_to 'Headquarters', headquarters_path %>
