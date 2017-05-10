@@ -22,12 +22,24 @@
 
 <p>
 	<b>Agents:</b>
-	<% @agent.each do |agent| %>
-		<% if agent.free %>
-			<%= agent.name %>
-		<% end %>
-	<% end %>
+  <ul>
+    <% @free_agents.each do |agent| %>
+      <li><%= agent.name %></li>
+    <% end %>
+  </ul>
 </p>
+
+
+<%= form_for(@mission) do |f| %>
+  <div class="field">
+  <%= f.label :agent %><br />
+    <%= f.select :agent, @free_agents,
+      prompt: 'Selecciona un agente' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Iniciar misión' %>
+  </div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_mission_path(@mission) %> |

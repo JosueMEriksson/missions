@@ -3,7 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Kind</th>
     <th>Level</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +14,9 @@
 <% @agents.each do |agent| %>
   <tr>
     <td><%= agent.name %></td>
+    <td><%= agent.kind %></td>
     <td><%= agent.level %></td>
+    <td><%= status_agent(agent.free) %></td>
     <td><%= link_to 'Show', agent %></td>
     <td><%= link_to 'Edit', edit_agent_path(agent) %></td>
     <td><%= link_to 'Destroy', agent, method: :delete, data: { confirm: 'Are you sure?' } %></td>

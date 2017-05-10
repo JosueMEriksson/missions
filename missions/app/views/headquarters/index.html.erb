@@ -4,10 +4,7 @@
 
 <h1>Base de operaciones</h1>
 
-<%= link_to 'Agentes', agents_path %>
-<%= link_to 'Misiones', missions_path %>
-
-<h3>Misiones</h3>
+<h3><%= link_to 'Misiones', missions_path %></h3>
 <% @missions.each do |mission| %>
 	<div class="entry">
 		<b><%= mission.title %></b>
@@ -16,7 +13,7 @@
 	</div>
 <% end %>
 
-<h3>Agentes</h3>
+<h3><%= link_to 'Agentes', agents_path %></h3>
 <% @agents.each do |agent| %>
 	<div class="entry">
 		<b><%= agent.name %></b>
