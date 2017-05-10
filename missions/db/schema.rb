@@ -15,22 +15,25 @@ ActiveRecord::Schema.define(:version => 20170509101550) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
-    t.string   "ability"
-    t.integer  "level"
-    t.boolean  "on_mission"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "kind"
+    t.integer  "level",      :default => 1
+    t.boolean  "free",       :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "missions", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "type"
-    t.string   "status"
+    t.string   "specialty"
+    t.integer  "status",      :default => 0
     t.integer  "reward"
-    t.string   "agent"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "agent_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
+
+  add_index "missions", ["specialty"], :name => "index_missions_on_specialty"
+  add_index "missions", ["status"], :name => "index_missions_on_status"
 
 end

@@ -14,6 +14,7 @@ class MissionsController < ApplicationController
   # GET /missions/1.json
   def show
     @mission = Mission.find(params[:id])
+    @agent = Agent.order(:name)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -4,10 +4,9 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th>Type</th>
+    <th>Specialty</th>
     <th>Status</th>
     <th>Reward</th>
-    <th>Agent</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,10 +16,9 @@
   <tr>
     <td><%= mission.title %></td>
     <td><%= mission.description %></td>
-    <td><%= mission.type %></td>
-    <td><%= mission.status %></td>
+    <td><%= mission.specialty %></td>
+    <td><%= status_mission(mission.status) %></td>
     <td><%= mission.reward %></td>
-    <td><%= mission.agent %></td>
     <td><%= link_to 'Show', mission %></td>
     <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
     <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>

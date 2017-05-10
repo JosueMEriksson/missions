@@ -11,13 +11,8 @@
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @mission.type %>
-</p>
-
-<p>
   <b>Status:</b>
-  <%= @mission.status %>
+  <%= status_mission(@mission.status) %>
 </p>
 
 <p>
@@ -26,8 +21,12 @@
 </p>
 
 <p>
-  <b>Agent:</b>
-  <%= @mission.agent %>
+	<b>Agents:</b>
+	<% @agent.each do |agent| %>
+		<% if agent.free %>
+			<%= agent.name %>
+		<% end %>
+	<% end %>
 </p>
 
 
