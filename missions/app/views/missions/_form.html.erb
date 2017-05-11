@@ -21,7 +21,8 @@
   </div>
   <div class="field">
     <%= f.label :specialty %><br />
-    <%= f.text_field :specialty %>
+    <%= f.select :specialty, Specialty::SPECIALTIES.map{ |k,v| [v,k]},
+      prompt: 'Selecciona una especialidad' %>
   </div>
   <div class="field">
     <%= f.label :reward %><br />

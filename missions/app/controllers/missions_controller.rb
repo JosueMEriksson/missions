@@ -81,4 +81,11 @@ class MissionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def solve
+    @mission = Mission.find(params[:id])
+    @mission.do_mission if @mission
+    redirect_to headquarters_path
+
+  end
 end

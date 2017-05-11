@@ -13,4 +13,8 @@ module ApplicationHelper
 			'Ocupado'
 		end
 	end
+
+	def show_specialty(spec)
+		Specialty::SPECIALTIES[spec.to_i]
+	end
 end

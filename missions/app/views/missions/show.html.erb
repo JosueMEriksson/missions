@@ -11,6 +11,11 @@
 </p>
 
 <p>
+<b>Specialty:</b>
+<%= show_specialty(@mission.specialty) %>
+</p>
+
+<p>
   <b>Status:</b>
   <%= status_mission(@mission.status) %>
 </p>
@@ -20,27 +25,25 @@
   <%= @mission.reward %>
 </p>
 
-<p>
-	<b>Agents:</b>
-  <ul>
-    <% @free_agents.each do |agent| %>
-      <li><%= agent.name %></li>
-    <% end %>
-  </ul>
-</p>
-
-
-<%= form_for(@mission) do |f| %>
-  <div class="field">
-  <%= f.label :agent %><br />
-    <%= f.select :agent, @free_agents,
-      prompt: 'Selecciona un agente' %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Iniciar misión' %>
-  </div>
+<% if @mission.status.eql?(0) %>
+  <%= form_for(@mission) do |f| %>
+    <div class="field">
+      <%= f.label :agent_id %><br />
+      <%= f.select :agent_id, @free_agents.map{ |a| [a.name, a.id]},
+        prompt: 'Selecciona un agente' %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Iniciar misión' %>
+    </div>
+  <% end %>
 <% end %>
 
+<% if @mission.status.eql?(1) %>
+<p>
+  <b>Agent:</b>
+  <%= @mission.agent.name %>, <%= show_specialty(@mission.agent.kind) %>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_mission_path(@mission) %> |
 <%= link_to 'Back', missions_path %>

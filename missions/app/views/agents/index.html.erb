@@ -14,7 +14,7 @@
 <% @agents.each do |agent| %>
   <tr>
     <td><%= agent.name %></td>
-    <td><%= agent.kind %></td>
+    <td><%= show_specialty(agent.kind) %></td>
     <td><%= agent.level %></td>
     <td><%= status_agent(agent.free) %></td>
     <td><%= link_to 'Show', agent %></td>

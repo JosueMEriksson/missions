@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170509101550) do
+ActiveRecord::Schema.define(:version => 20170511095256) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(:version => 20170509101550) do
     t.boolean  "free",       :default => true
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.integer  "player_id"
   end
+
+  add_index "agents", ["player_id"], :name => "index_agents_on_player_id"
 
   create_table "missions", :force => true do |t|
     t.string   "title"
@@ -35,5 +38,12 @@ ActiveRecord::Schema.define(:version => 20170509101550) do
 
   add_index "missions", ["specialty"], :name => "index_missions_on_specialty"
   add_index "missions", ["status"], :name => "index_missions_on_status"
+
+  create_table "players", :force => true do |t|
+    t.string   "name"
+    t.integer  "money",      :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
 end
