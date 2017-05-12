@@ -11,6 +11,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @missions.each do |mission| %>
@@ -20,7 +21,11 @@
     <td><%= show_specialty(mission.specialty) %></td>
     <td><%= status_mission(mission.status) %></td>
     <td><%= mission.reward %></td>
+    <% if mission.agent %>
     <td><%= mission.agent.name %></td>
+    <% else %>
+    <td></td>
+    <% end %>
     <td><%= link_to 'Show', mission %></td>
     <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
     <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>

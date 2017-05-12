@@ -26,7 +26,7 @@
 </p>
 
 <% if @mission.status.eql?(0) %>
-  <%= form_for(@mission) do |f| %>
+  <%= form_for @mission, url: start_mission_mission_path(@mission) do |f| %>
     <div class="field">
       <%= f.label :agent_id %><br />
       <%= f.select :agent_id, @free_agents.map{ |a| [a.name, a.id]},
@@ -38,7 +38,7 @@
   <% end %>
 <% end %>
 
-<% if @mission.status.eql?(1) %>
+<% if @mission.agent %>
 <p>
   <b>Agent:</b>
   <%= @mission.agent.name %>, <%= show_specialty(@mission.agent.kind) %>

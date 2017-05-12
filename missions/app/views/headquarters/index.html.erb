@@ -12,7 +12,9 @@
 		<b><%= mission.title %></b>
 		<%= mission.reward %>
 		<%= status_mission(mission.status) %>
-		<%= mission.agent.name %>
+		<% if mission.agent %>
+			<%= mission.agent.name %>
+		<% end %>
 	</div>
 <% end %>
 
@@ -22,5 +24,6 @@
 		<b><%= agent.name %></b>
 		<%= agent.level %>
 		<%= status_agent(agent.free) %>
+		<%= contracted(agent.player_id) %>
 	</div>
 <% end %>

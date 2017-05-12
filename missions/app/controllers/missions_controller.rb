@@ -14,7 +14,7 @@ class MissionsController < ApplicationController
   # GET /missions/1.json
   def show
     @mission = Mission.find(params[:id])
-    @free_agents = Agent.order(:name).where(free: true)
+    @free_agents = Agent.order(:name).where(player_id: Player.first.id, free: true)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -86,6 +86,13 @@ class MissionsController < ApplicationController
     @mission = Mission.find(params[:id])
     @mission.do_mission if @mission
     redirect_to headquarters_path
+  end
 
+  def start_mission
+    @mission = Mission.find(params[:id])
+    if @mission.update_attributes(params[:mission])
+      @mission.on_going_mission
+      redirect_to @mission, notice: 'La misión ha comenzado.'
+    end
   end
 end

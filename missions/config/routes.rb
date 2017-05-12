@@ -2,13 +2,18 @@ Missions::Application.routes.draw do
   resources :missions do
     member do
       get :solve
+      put :start_mission
     end
   end
 
 
   get "headquarters/index"
 
-  resources :agents
+  resources :agents do
+    member do
+      get :contract
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

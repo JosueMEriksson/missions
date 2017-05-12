@@ -3,6 +3,7 @@ class AgentsController < ApplicationController
   # GET /agents.json
   def index
     @agents = Agent.all
+    @player = Player.first
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +81,13 @@ class AgentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def contract
+    @agent = Agent.find(params[:id])
+    @player = Player.first
+    @player.contract(@agent) if @agent
+    redirect_to action: :index
+
+  end
+
 end
