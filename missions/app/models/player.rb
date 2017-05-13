@@ -8,17 +8,9 @@ class Player < ActiveRecord::Base
   end
 
   def contract(agent)
-  	money = self.money
-  	if money >= 500
-  		money -= 500
-  	else
-  		money = 0
-  	end
-
-  	self.money = 25
+  	self.money -= 500
   	agent.player_id = self.id
-
-  	self.save
+    self.save
   	agent.save
   end
 end
