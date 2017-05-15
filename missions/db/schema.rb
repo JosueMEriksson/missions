@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170511095256) do
+ActiveRecord::Schema.define(:version => 20170515092933) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20170511095256) do
   end
 
   add_index "agents", ["player_id"], :name => "index_agents_on_player_id"
+
+  create_table "infos", :force => true do |t|
+    t.text     "message"
+    t.datetime "created_at"
+    t.integer  "player_id"
+  end
+
+  add_index "infos", ["player_id"], :name => "index_infos_on_player_id"
 
   create_table "missions", :force => true do |t|
     t.string   "title"

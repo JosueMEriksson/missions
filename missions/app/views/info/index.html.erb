@@ -1,0 +1,17 @@
+<h1>Lista de Mensajes</h1>
+
+<table>
+  <tr>
+    <th>Mensaje</th>
+    <th>Tiempo</th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.message %></td>
+    <td><%= message.created_at %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Headquarters', headquarters_path %>

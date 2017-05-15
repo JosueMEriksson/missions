@@ -1,4 +1,6 @@
 Missions::Application.routes.draw do
+  get "info/index"
+
   resources :missions do
     member do
       get :solve
