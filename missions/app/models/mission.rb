@@ -10,7 +10,7 @@ class Mission < ActiveRecord::Base
   MISSION_STATUS = {
     sin_asignar: 0,
     en_curso: 1,
-    complet_exito: 2,
+    completada_exito: 2,
     fracasada: 3
   }
 

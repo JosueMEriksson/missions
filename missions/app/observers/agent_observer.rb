@@ -1,6 +1,8 @@
 class AgentObserver < ActiveRecord::Observer
   def after_create(agent)
-  	agent.player.info.create(message: "Se ha creado el agente #{agent.name}.")
+  	Info.create(
+      message: "Se ha creado el agente #{agent.name}.",
+      player_id: Player.first.id)
 
   	true
   end
@@ -15,7 +17,9 @@ class AgentObserver < ActiveRecord::Observer
 
   def hire_agent(agent)
   	if agent.changes.keys.include?("player_id") and not agent.player_id.blank?
-  		agent.player.info.create(message: "Has contratado al agente #{agent.name}.")
+  		Info.create(
+        message: "Has contratado al agente #{agent.name}.",
+        player_id: agent.player_id)
   	end
   end
 end
