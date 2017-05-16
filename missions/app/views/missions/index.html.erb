@@ -17,30 +17,7 @@
   </tr>
 
 <% @missions.each do |mission| %>
-  <tr>
-    <td><%= mission.title %></td>
-    <td><%= mission.description %></td>
-    <td><%= show_specialty(mission.specialty) %></td>
-    <% if mission.difficulty %>
-    <td><%= show_difficulty(mission.difficulty) %></td>
-    <% else %>
-    <td>Sin dif.</td>
-    <% end %>
-    <td><%= status_mission(mission.status) %></td>
-    <td><%= mission.reward %></td>
-    <% if mission.agent %>
-    <td><%= mission.agent.name %></td>
-    <% else %>
-    <td></td>
-    <% end %>
-    <td><%= mission.probability? %></td>
-    <td><%= link_to 'Show', mission %></td>
-    <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
-    <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% if mission.realizable? %>
-    <td><%= link_to 'Resolver', solve_mission_path(mission) %></td>
-    <% end %>
-  </tr>
+  <%= render 'mission_line', mission: mission %>
 <% end %>
 </table>
 

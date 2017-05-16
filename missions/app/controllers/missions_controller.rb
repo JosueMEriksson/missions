@@ -85,7 +85,11 @@ class MissionsController < ApplicationController
   def solve
     @mission = Mission.find(params[:id])
     @mission.do_mission if @mission
-    redirect_to headquarters_path
+    # @missions = Mission.all
+    respond_to do |format|
+      format.js
+    end
+    # redirect_to headquarters_path
   end
 
   def start_mission
