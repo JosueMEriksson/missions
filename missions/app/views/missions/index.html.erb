@@ -5,9 +5,11 @@
     <th>Title</th>
     <th>Description</th>
     <th>Specialty</th>
+    <th>Difficulty</th>
     <th>Status</th>
     <th>Reward</th>
     <th>Agent</th>
+    <th>Prob (%)</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +21,11 @@
     <td><%= mission.title %></td>
     <td><%= mission.description %></td>
     <td><%= show_specialty(mission.specialty) %></td>
+    <% if mission.difficulty %>
+    <td><%= show_difficulty(mission.difficulty) %></td>
+    <% else %>
+    <td>Sin dif.</td>
+    <% end %>
     <td><%= status_mission(mission.status) %></td>
     <td><%= mission.reward %></td>
     <% if mission.agent %>
@@ -26,6 +33,7 @@
     <% else %>
     <td></td>
     <% end %>
+    <td><%= mission.probability? %></td>
     <td><%= link_to 'Show', mission %></td>
     <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
     <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>

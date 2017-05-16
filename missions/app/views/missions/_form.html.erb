@@ -25,6 +25,11 @@
       prompt: 'Selecciona una especialidad' %>
   </div>
   <div class="field">
+    <%= f.label :difficulty %><br />
+    <%= f.select :difficulty, Mission::DIFFICULTIES.map{ |k,v| [v,k]},
+      prompt: 'Selecciona una dificultad' %>
+  </div>
+  <div class="field">
     <%= f.label :reward %><br />
     <%= f.number_field :reward %>
   </div>

@@ -1,5 +1,5 @@
 class Mission < ActiveRecord::Base
-  attr_accessible :agent, :description, :reward, :status, :title, :specialty, :agent_id
+  attr_accessible :agent, :description, :reward, :status, :title, :specialty, :agent_id, :difficulty
   
   belongs_to :agent
 
@@ -14,10 +14,20 @@ class Mission < ActiveRecord::Base
     fracasada: 3
   }
 
-  def do_mission
-    probability = self.specialty.eql?(self.agent.kind) ? 80 : 50
+  MISSION_DIFFICULTY = {
+    facil: 0,
+    normal: 1,
+    dificil: 2
+  }
 
-    if rand(1..100) <= probability
+  DIFFICULTIES = {
+    0 => 'Fácil',
+    1 => 'Normal',
+    2 => 'Difícil'
+  }
+
+  def do_mission
+    if rand(1..100) <= probability?
       #Mision exitosa
       self.status = 2
       self.agent.level += 1
@@ -32,6 +42,20 @@ class Mission < ActiveRecord::Base
     self.save
     self.agent.save
     self.agent.player.save
+  end
+
+  def probability?
+    if self.agent
+      if self.difficulty.eql?(MISSION_DIFFICULTY[:facil])
+        self.specialty.eql?(self.agent.kind) ? 100 : 70
+      elsif self.difficulty.eql?(MISSION_DIFFICULTY[:normal])
+        self.specialty.eql?(self.agent.kind) ? 80 : 50
+      elsif self.difficulty.eql?(MISSION_DIFFICULTY[:dificil])
+        self.specialty.eql?(self.agent.kind) ? 60 : 30
+      end
+    else
+      0
+    end
   end
 
   def realizable?

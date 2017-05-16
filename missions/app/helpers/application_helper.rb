@@ -17,4 +17,8 @@ module ApplicationHelper
 	def show_specialty(spec)
 		Specialty::SPECIALTIES[spec.to_i]
 	end
+
+	def show_difficulty(dif)
+		Mission::DIFFICULTIES[dif]
+	end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170515092933) do
+ActiveRecord::Schema.define(:version => 20170516084201) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20170515092933) do
     t.integer  "agent_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.integer  "difficulty"
   end
 
   add_index "missions", ["specialty"], :name => "index_missions_on_specialty"
