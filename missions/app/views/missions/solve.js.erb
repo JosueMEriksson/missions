@@ -1,2 +1,1 @@
-//$("#table_index_missions").replaceWith("<%= escape_javascript(render("index", missions: @missions)) %>");
-$("#table_index_missions").html("<%= j render mission_line %>");
+$("#mission_line_<%= @mission.id %>").replaceWith("<%= escape_javascript(render("mission_line", mission: @mission)) %>");

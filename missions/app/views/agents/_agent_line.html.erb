@@ -1,0 +1,13 @@
+<tr id="agent_line_<%= agent.id %>">
+    <td><%= agent.name %></td>
+    <td><%= show_specialty(agent.kind) %></td>
+    <td><%= agent.level %></td>
+    <td><%= status_agent(agent.free) %></td>
+    <td><%= contracted(agent.player_id) %></td>
+    <td><%= link_to 'Show', agent %></td>
+    <td><%= link_to 'Edit', edit_agent_path(agent) %></td>
+    <td><%= link_to 'Destroy', agent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if agent.contractable? and @player.with_money? %>
+    <td><%= link_to 'Contratar', contract_agent_path(agent), remote: true %></td>
+    <% end %>
+  </tr>

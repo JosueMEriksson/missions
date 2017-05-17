@@ -86,7 +86,10 @@ class AgentsController < ApplicationController
     @agent = Agent.find(params[:id])
     @player = Player.first
     @player.contract(@agent) if @agent
-    redirect_to action: :index
+    respond_to do |format|
+      format.js
+    end
+    # redirect_to action: :index
 
   end
 
