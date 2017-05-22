@@ -45,16 +45,16 @@ class Mission < ActiveRecord::Base
   end
 
   def probability?
-    if self.agent
-      if self.difficulty.eql?(MISSION_DIFFICULTY[:facil])
-        self.specialty.eql?(self.agent.kind) ? 100 : 70
-      elsif self.difficulty.eql?(MISSION_DIFFICULTY[:normal])
-        self.specialty.eql?(self.agent.kind) ? 80 : 50
-      elsif self.difficulty.eql?(MISSION_DIFFICULTY[:dificil])
-        self.specialty.eql?(self.agent.kind) ? 60 : 30
-      end
-    else
-      0
+    return 0 unless self.agent 
+    same_specialty = self.specialty.eql?(self.agent.kind)
+
+    case self.difficulty
+    when MISSION_DIFFICULTY[:facil]
+      same_specialty ? 100 : 70
+    when MISSION_DIFFICULTY[:normal]
+      same_specialty ? 80 : 50
+    when MISSION_DIFFICULTY[:dificil]
+      same_specialty ? 60 : 30
     end
   end
 
